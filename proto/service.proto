@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+
+message Request {
+    string username = 1;
+    string name= 2;
+}
+
+message Response{
+    string result = 1;
+}
+
+service AddService{
+    rpc Add(Request) returns (Response);
+}
+
+
+
