@@ -39,7 +39,7 @@ func (s *server) AddtoKafka(ctx context.Context, request *proto.Request) (*proto
 		panic(err)
 	}
 
-	// Produce messages to topic (asynchronously)
+	
 	topic := "jobs-topic1"
 	for _, word := range []string{string(jobString)} {
 		p.Produce(&kafka.Message{

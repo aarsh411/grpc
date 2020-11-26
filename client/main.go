@@ -76,7 +76,7 @@ func main() {
 					ctx.JSON(http.StatusOK, gin.H{
 						"result1": fmt.Sprint(job),
 					})
-					saveJobToMySQL(job)
+					save(job)
 				} else {
 					fmt.Printf("Consumer error: %v (%v)\n", err, msg)
 					break
@@ -97,11 +97,10 @@ func main() {
 }
 
 
-func saveJobToMySQL(jobString string) {
+func save(jobString string) {
 
-	fmt.Println("Save to MySQL")
+	fmt.Println("Saved to DB")
 	db := dbConn()
-	//Save data into Job struct
 	s := strings.Split(jobString, "&")
 	in, err := db.Prepare("INSERT INTO user(username,name) VALUES(?,?)")
 	if err != nil {
